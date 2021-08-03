@@ -54,7 +54,6 @@ export class MainNavComponent implements OnInit {
     openLoginModal(){
       var dialogOBJ = this.dialog.open(LoginComponent, {
         data: this.modalData,
-        width: "95%",
         maxWidth: "unset",
         panelClass: "myDialogCSS",
       })
