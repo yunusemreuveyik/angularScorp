@@ -26,7 +26,7 @@
       <a mat-list-item routerLink="/home" routerDirection="root" *ngIf="!(isHandset$ | async)" >{{'homePage' | translate}}</a>
       <a mat-list-item routerLink="/contact"  routerDirection="root" *ngIf="!(isHandset$ | async)">{{'contactPage' | translate}}</a>
       <!-- <a mat-list-item href="#" *ngIf="!(isHandset$ | async)">Link 3</a> -->
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" *ngIf="!(isHandset$ | async)">
         <!-- <mat-label>Select a language</mat-label> -->
         <mat-select [(ngModel)]="selectedLang" (ngModelChange)="changeLanguage()">
           <mat-option *ngFor="let lang of languages" [value]="lang.code">
@@ -34,7 +34,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-button *ngIf="!isUserExist" (click)="openLoginModal()">Login</button>
+      <button mat-button *ngIf="!isUserExist && !(isHandset$ | async)" (click)="openLoginModal()">Login</button>
     </mat-toolbar>
 
     <!-- ng-content bizim contentimiz her zaman navigator altında olmuş olucak, yani olması gerektiği gibi -->
