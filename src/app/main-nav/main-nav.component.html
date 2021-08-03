@@ -6,8 +6,8 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item routerLink="/home" routerDirection="root">{{'homePage' | translate}}</a>
+      <a mat-list-item routerLink="/contact" routerDirection="root">{{'contactPage' | translate}}</a>
       <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -23,9 +23,9 @@
       </button>
       <span style="display: flex; align-items: center;"><mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">home</mat-icon>Scorp</span>
       <span class="spacer"></span>
-      <a mat-list-item  *ngIf="!(isHandset$ | async)" >Link 1</a>
-      <a mat-list-item href="#" *ngIf="!(isHandset$ | async)">Link 2</a>
-      <a mat-list-item href="#" *ngIf="!(isHandset$ | async)">Link 3</a>
+      <a mat-list-item routerLink="/home" routerDirection="root" *ngIf="!(isHandset$ | async)" >{{'homePage' | translate}}</a>
+      <a mat-list-item routerLink="/contact"  routerDirection="root" *ngIf="!(isHandset$ | async)">{{'contactPage' | translate}}</a>
+      <!-- <a mat-list-item href="#" *ngIf="!(isHandset$ | async)">Link 3</a> -->
       <mat-form-field appearance="fill">
         <!-- <mat-label>Select a language</mat-label> -->
         <mat-select [(ngModel)]="selectedLang" (ngModelChange)="changeLanguage()">
@@ -34,6 +34,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <button mat-button *ngIf="!isUserExist">Login</button>
     </mat-toolbar>
 
     <!-- ng-content bizim contentimiz her zaman navigator altında olmuş olucak, yani olması gerektiği gibi -->

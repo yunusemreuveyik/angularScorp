@@ -20,6 +20,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/app.reducer';
 import { FormsModule } from '@angular/forms';
+import { ContactComponent } from './pages/contact/contact.component';
+import { RouterModule } from '@angular/router';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -30,13 +32,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     MainNavComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    RouterModule,
     FormsModule,
     HttpClientModule,
     MatToolbarModule,
