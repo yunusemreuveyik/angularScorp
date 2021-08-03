@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { countries } from '../models/countries';
+import { languages } from '../models/languages';
 
 @Component({
   selector: 'app-main-nav',
@@ -11,6 +12,11 @@ import { countries } from '../models/countries';
 })
 export class MainNavComponent {
 
+
+  languages: Array<languages> = [
+    {code: "tr", name:"türkçe"},
+    {code: "en", name:"ingilizce"},
+  ]
  countryList : Array<countries> = [
     { id: "TR", name: "Turkey" },
     { id: "US", name: "United States of America" },
