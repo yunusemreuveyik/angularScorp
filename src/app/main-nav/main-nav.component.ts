@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { countries } from '../models/countries';
 import { languages } from '../models/languages';
+import { Store } from '@ngrx/store';
+import { appState } from '../state/app.state';
+import { changeLanguage } from '../state/app.actions';
+import { TranslatingService } from '../services/translatingService.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -12,7 +16,7 @@ import { languages } from '../models/languages';
 })
 export class MainNavComponent {
 
-
+  selectedLang:any="tr";
   languages: Array<languages> = [
     {code: "tr", name:"türkçe"},
     {code: "en", name:"ingilizce"},
@@ -33,6 +37,16 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+    private store: Store<{appStateOBJ:appState}>,
+    private translatingService: TranslatingService) {}
+
+    changeLanguage(){
+       this.store.dispatch(changeLanguage({lang: this.selectedLang}))
+      this.store.select("appStateOBJ").subscribe(res=>{
+        console.log('data: ', res.language);
+        this.translatingService.setLanguage(res.language)
+      })
+    }
 
 }
