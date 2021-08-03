@@ -19,9 +19,12 @@ import {MatSelectModule} from '@angular/material/select';
 import { HomeComponent } from './pages/home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './state/app.reducer';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -33,14 +36,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainNavComponent,
     FooterComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    ReactiveFormsModule,
     RouterModule,
+    MatDialogModule,
+    MatInputModule,
     FormsModule,
     HttpClientModule,
     MatToolbarModule,

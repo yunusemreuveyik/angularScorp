@@ -1,0 +1,32 @@
+<div [formGroup]="form" (submit)="login(form.value)">
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="title" [(ngModel)]="titleVar" required>
+          <!-- <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="name" [(ngModel)]="nameVar" required>
+          <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="email" [(ngModel)]="emailVar" required>
+          <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="pat@example.com" formControlName="password" [(ngModel)]="passwordVar" required>
+          <!-- <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
+      </div>
+      <button mat-button type="submit" [disabled]="!form.valid">Login</button>
+</div>

@@ -34,7 +34,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-button *ngIf="!isUserExist">Login</button>
+      <button mat-button *ngIf="!isUserExist" (click)="openLoginModal()">Login</button>
     </mat-toolbar>
 
     <!-- ng-content bizim contentimiz her zaman navigator altında olmuş olucak, yani olması gerektiği gibi -->
