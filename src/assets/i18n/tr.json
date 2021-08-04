@@ -3,11 +3,13 @@
     "footer_DummyText" : "Bu uygulama Yunus Emre Üveyik tarafından yapılmıştır | Yazılım Mühendisi",
     "homePage":"Ana Sayfa",
     "contactPage":"İletişim",
+    "password":"Şifre",
     "contact":{
         "title":"Ünvan",
         "message":"Mesaj",
         "name":"İsim",
         "phone":"Telefon",
-        "send":"Gönder"
+        "send":"Gönder",
+        "country":"Ülke"
     }
 }

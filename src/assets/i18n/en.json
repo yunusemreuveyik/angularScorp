@@ -4,11 +4,13 @@
     "türkçe": "Turkish",
     "homePage":"Home Page",
     "contactPage":"Contact",
+    "password":"Password",
     "contact":{
         "title":"Title",
         "message":"Message",
         "name":"Name",
         "phone":"Phone",
-        "send":"Send"
+        "send":"Send",
+        "country":"Country"
     }
 }

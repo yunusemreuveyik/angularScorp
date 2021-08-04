@@ -12,14 +12,14 @@
 
   <div class="example-container">
     <mat-form-field appearance="fill">
-      <mat-label>Title</mat-label>
+      <mat-label>{{'contact.title' | translate}}</mat-label>
       <input matInput formControlName="title" id="title" required>
       <!-- <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error> -->
     </mat-form-field>
   </div>
   <div class="example-container">
     <mat-form-field appearance="fill">
-      <mat-label>Name</mat-label>
+      <mat-label>{{'contact.name' | translate}}</mat-label>
       <input matInput formControlName="name" id="name" required>
       <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
     </mat-form-field>
@@ -33,7 +33,7 @@
   </div>
   <div class="example-container">
     <mat-form-field appearance="fill">
-      <mat-label>Password</mat-label>
+      <mat-label>{{'password' | translate}}</mat-label>
       <input matInput formControlName="password" id="password" required>
       <!-- <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error> -->
     </mat-form-field>
