@@ -14,6 +14,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../pages/login/login.component';
 import { LoginInfoComponent } from '../pages/login-info/login-info.component';
 import { NavigationEnd, Router } from '@angular/router';
+import { ToasterService } from '../services/toaster.service';
+import { toastTypes } from '../models/toastTypes.enum';
 
 @Component({
   selector: 'app-main-nav',
@@ -40,6 +42,7 @@ export class MainNavComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,
     private store: Store<{ appStateOBJ: appState }>,
     private translatingService: TranslatingService,
+    private toastService: ToasterService,
     private dialog: MatDialog,
     private router: Router) {
     this.currentPage$ = this.router.events.pipe(filter((event: any) => event instanceof NavigationEnd));
@@ -63,6 +66,7 @@ export class MainNavComponent implements OnInit {
         console.log(`Dialog result:`, result);
 
         this.store.dispatch(updateUser({ user: result }))
+        this.toastService.openSnackBar(toastTypes.loginSuccess, 2)  //sadece biraz görsellik eklemek için ekledim aslında bi anlamı yok, bir sonuca bağlı değil :)
 
       }
     });

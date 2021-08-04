@@ -29,6 +29,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { LoginInfoComponent } from './pages/login-info/login-info.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LayoutModule,
     ReactiveFormsModule,
     RouterModule,
+    MatSnackBarModule,
     MatDialogModule,
     MatInputModule,
     FormsModule,

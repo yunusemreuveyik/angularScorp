@@ -5,6 +5,7 @@
     "homePage":"Home Page",
     "contactPage":"Contact",
     "welcome":"Welcome",
+    "cancelText":"Close",
     "password":"Password",
     "homeworks":"Welcome!",
     "contact":{
@@ -14,6 +15,9 @@
         "phone":"Phone",
         "send":"Send",
         "country":"Country"
+    },
+    "toastMessages":{
+        "loginSuccess":"Login successfull!"
     },
         "TR":"Turkey",
         "US":"United States of America",

@@ -5,6 +5,7 @@
     "contactPage":"İletişim",
     "password":"Şifre",
     "welcome":"Hoşgeldiniz",
+    "cancelText":"Kapat",
     "homeworks":"Hoşgeldiniz!",
     "contact":{
         "title":"Ünvan",
@@ -13,6 +14,9 @@
         "phone":"Telefon",
         "send":"Gönder",
         "country":"Ülke"
+    },
+    "toastMessages":{
+        "loginSuccess":"Login başarıyla gerçekleştirildi!"
     },
         "TR":"Türkiye",
         "US":"Amerika",
