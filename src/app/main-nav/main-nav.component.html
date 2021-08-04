@@ -11,7 +11,13 @@
     </mat-nav-list>
     
     <button mat-button *ngIf="((userinfo$ | async)?.name == '')" (click)="openLoginModal()" style="width: 100%; margin-top: 50px;">Login</button>
-    <button mat-button *ngIf="((userinfo$ | async)?.name != '')" (click)="openProfileInfoModal()" style="width: 100%;">{{ (userinfo$ | async)?.name }}</button>
+    <button mat-button *ngIf="((userinfo$ | async)?.name != '')" (click)="openProfileInfoModal()" style="    width: 100%;
+    border-bottom: black thin solid;
+    border-radius: 0;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    padding: 0;"><div style="font-weight: 600;">{{ 'welcome' | translate }}!</div> {{ (userinfo$ | async)?.name }}</button>
+    <p style="text-align: center;">{{ (userinfo$ | async)?.email }}</p>
     <mat-form-field appearance="fill">
       <!-- <mat-label>Select a language</mat-label> -->
       <mat-select [(ngModel)]="selectedLang" (ngModelChange)="changeLanguage()">
