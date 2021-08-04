@@ -31,7 +31,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span style="display: flex; align-items: center;"><mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon">home</mat-icon>Scorp</span>
+      <span style="display: flex; align-items: center;"><mat-icon style="margin-right: 10px;" aria-hidden="false" aria-label="Example home icon" routerLink="/home">home</mat-icon>{{ deleteSlash((currentPage$ | async)?.url) | uppercase}}</span>
       <span class="spacer"></span>
       <a mat-list-item routerLink="/home" routerDirection="root" *ngIf="!(isHandset$ | async)" >{{'homePage' | translate}}</a>
       <a mat-list-item routerLink="/contact"  routerDirection="root" *ngIf="!(isHandset$ | async)">{{'contactPage' | translate}}</a>

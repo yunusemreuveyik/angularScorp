@@ -95,6 +95,10 @@ export class MainNavComponent implements OnInit {
       s2 = routeLink.substring(1);
     }
 
+    if(s2=="home"){
+      s2 = "scorp"
+    }
+
     return s2
   }
 
