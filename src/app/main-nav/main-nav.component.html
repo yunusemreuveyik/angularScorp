@@ -8,8 +8,18 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/home" routerDirection="root">{{'homePage' | translate}}</a>
       <a mat-list-item routerLink="/contact" routerDirection="root">{{'contactPage' | translate}}</a>
-      <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
+    
+    <button mat-button *ngIf="((userinfo$ | async)?.name == '')" (click)="openLoginModal()" style="width: 100%; margin-top: 50px;">Login</button>
+    <button mat-button *ngIf="((userinfo$ | async)?.name != '')" (click)="openProfileInfoModal()" style="width: 100%;">{{ (userinfo$ | async)?.name }}</button>
+    <mat-form-field appearance="fill">
+      <!-- <mat-label>Select a language</mat-label> -->
+      <mat-select [(ngModel)]="selectedLang" (ngModelChange)="changeLanguage()">
+        <mat-option *ngFor="let lang of languages" [value]="lang.code">
+          {{lang.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
