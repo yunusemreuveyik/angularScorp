@@ -6,7 +6,7 @@ import { map, startWith } from 'rxjs/operators';
 import { contactRequest } from 'src/app/models/contactRequest';
 import { countries } from 'src/app/models/countries';
 import { userinfo } from 'src/app/models/userinfo';
-import { getUserInfo } from 'src/app/state/app.selectors';
+import { getLanguage, getUserInfo } from 'src/app/state/app.selectors';
 import { appState } from 'src/app/state/app.state';
 
 @Component({
@@ -19,23 +19,26 @@ export class ContactComponent implements OnInit {
   contactForm: FormGroup
   selectedCountry: any
   countryList: countries[] = [
-    { id: "TR", name: "Turkey" },
-    { id: "US", name: "United States of America" },
-    { id: "GB", name: "United Kingdom" },
-    { id: "DE", name: "Germany" },
-    { id: "SE", name: "Sweden" },
-    { id: "KE", name: "Kenya" },
-    { id: "BR", name: "Brazil" },
-    { id: "ZW", name: "Zimbabwe" }
+    { id: "TR", languages: {en: "Turkey", tr:"Türkiye"} },
+    { id: "US", languages: {en: "United States of America", tr:"Amerika"} },
+    { id: "UK", languages: {en: "United Kingdom", tr:"İngiltere"} },
+    { id: "DE", languages: {en: "Germany", tr:"Almanya"} },
+    { id: "SW", languages: {en: "Sweden", tr:"İsveç"} },
+    { id: "KE", languages: {en: "Kenya", tr:"Kenya"} },
+    { id: "BR", languages: {en: "Brazil", tr:"Brezilya"} },
+    { id: "ZW", languages: {en: "Zimbabwe", tr:"Zimbabve"} },
   ]
   email: string;
   name: string;
   filteredOptions: any
+  siteLanguage: string;
   constructor(protected fb: FormBuilder,
     private store: Store<{ appStateOBJ: appState }>) { }
 
   ngOnInit(): void {
-
+    this.store.select(getLanguage).subscribe(res=>{
+      this.siteLanguage = res
+    })
     this.filteredOptions = this.countryList
 
     this.userinfo$ = this.store.select(getUserInfo)
@@ -61,15 +64,25 @@ export class ContactComponent implements OnInit {
     })
   }
 
-  private filterData(value: string) {
+  private filterData(value: any) {
+   if(typeof(value)=="object"){ //bir seçim yaptığımızda string yerine obje geldiği için bozuyodu, bu kontrolü ekledim
+
+   }else{
     const filterValue = value.toLowerCase()
-    this.filteredOptions = this.countryList.filter(option => option.name?.toLowerCase().includes(filterValue))
+    this.filteredOptions = this.countryList.filter((option:any) => option.languages[this.siteLanguage]?.toLowerCase().includes(filterValue))
+   }
   }
 
-  displayFn(subject: any) {
-    console.log('subject: ', subject);
+  displayFn = (value:any) => {
 
-    return subject ? subject.name : undefined
+    if(value==""){
+      return undefined
+    }else{
+      console.log('subject: ', value.languages[this.siteLanguage]);
+
+      return value ? value.languages[this.siteLanguage] : undefined
+    }
+      
   }
   send() {
     var request: contactRequest = {

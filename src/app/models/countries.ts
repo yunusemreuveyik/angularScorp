@@ -1,4 +1,7 @@
 export class countries {
     id: string | undefined;
-    name: string | undefined;
+    languages: {
+        en: string,
+        tr: string
+    }
 }
