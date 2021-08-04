@@ -28,6 +28,7 @@ import {MatInputModule} from '@angular/material/input';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { LoginInfoComponent } from './pages/login-info/login-info.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -53,6 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatDialogModule,
     MatInputModule,
     FormsModule,
+    MatAutocompleteModule,
     HttpClientModule,
     MatToolbarModule,
     MatButtonModule,

@@ -1,1 +1,65 @@
-<p>contact works!</p>
+<div class="contactForm">
+    <form [formGroup]="contactForm" (ngSubmit)="send()" style="    width: fit-content;">
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+                <mat-label>{{'contact.title' | translate}}</mat-label>
+                <input matInput formControlName="title" id="title" required>
+                <!-- <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+                <mat-label>{{'contact.name' | translate}}</mat-label>
+                <input matInput formControlName="name" id="name" required>
+                <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" id="email" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+        </div>
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+                <mat-label>{{'contact.phone' | translate}}</mat-label>
+                <input matInput placeholder="+90 537 525 11 91" formControlName="phone" id="phone" required>
+                <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+        </div>
+
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Country</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               formControlName="stateGroup"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of countryList | async" [value]="option.name">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> -->
+
+        <div class="example-container">
+            <mat-form-field appearance="fill">
+                <mat-label>{{'contact.message' | translate}}</mat-label>
+                <input matInput formControlName="message" id="message" required>
+                <!-- <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+        </div>
+        <button mat-button type="submit" [disabled]="!contactForm.valid" style="width: 100%;"
+            color="primary">{{'contact.send' | translate}}</button>
+    </form>
+</div>
+
+<!-- <mat-form-field appearance="fill" >
+    <mat-select [(ngModel)]="selectedCountry" (ngModelChange)="selectCountry()" >
+      <mat-option *ngFor="let country of countryList" [value]="country.id">
+        {{country.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->

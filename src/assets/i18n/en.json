@@ -3,5 +3,12 @@
     "footer_DummyText" : "This App is created by Yunus Emre Uveyik | Software Engineer",
     "türkçe": "Turkish",
     "homePage":"Home Page",
-    "contactPage":"Contact"
+    "contactPage":"Contact",
+    "contact":{
+        "title":"Title",
+        "message":"Message",
+        "name":"Name",
+        "phone":"Phone",
+        "send":"Send"
+    }
 }
