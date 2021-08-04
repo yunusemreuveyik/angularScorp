@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { countries } from 'src/app/models/countries';
 import { userinfo } from 'src/app/models/userinfo';
 import { getUserInfo } from 'src/app/state/app.selectors';
@@ -28,10 +29,14 @@ export class ContactComponent implements OnInit {
   ]
   email: string;
   name: string;
+  filteredOptions:any
   constructor(protected fb: FormBuilder,
     private store: Store<{appStateOBJ:appState}>) { }
 
   ngOnInit(): void {
+
+    this.filteredOptions = this.countryList
+   
     this.userinfo$ = this.store.select(getUserInfo)
     this.userinfo$.subscribe((res:userinfo)=>{
       console.log('data: ', res);
@@ -44,18 +49,35 @@ export class ContactComponent implements OnInit {
         message: new FormControl("",Validators.required),
         name: new FormControl(this.name,Validators.required),
         phone: new FormControl("",Validators.required),
+        country: new FormControl("",Validators.required),
         email: new FormControl(this.email,[Validators.required, Validators.email]),
       })
+      this.contactForm.get("country")!.valueChanges.subscribe(res=>{
+        console.log(res)
+        this.filterData(res)
+      })
+      
     })
+  }
 
+  private filterData(value:string){
+    const filterValue = value.toLowerCase()
+    this.filteredOptions = this.countryList.filter(option => option.name?.toLowerCase().includes(filterValue))
+  }
+
+  displayFn(subject:any){
+    console.log('subject: ', subject);
     
-
-    
-
+    return subject ? subject.name : undefined
   }
   send(){
-    console.log('data: ', this.contactForm.value);
-    
+    var request = {
+      name: this.contactForm.value.name,
+      email: this.contactForm.value.email,
+      phonenumber: this.contactForm.value.phone,
+      country_code: this.contactForm.value.country.id,
+      text: this.contactForm.value.message
+    }
+    console.log('data: ', request);
   }
-  selectCountry(){}
 }
