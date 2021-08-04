@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { TranslatingService } from "../services/translatingService.service";
-import { changeLanguage } from "./app.actions";
+import { changeLanguage, updateUser } from "./app.actions";
 import { appState, initialState } from "./app.state";
 
 
@@ -11,6 +11,12 @@ const _appReducer = createReducer(
         return {
             ...state,
             language: action.lang
+        }
+    }),
+    on(updateUser, (state, action)=>{
+        return {
+            ...state,
+            userinfo: action.user
         }
     })
 )

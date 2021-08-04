@@ -6,7 +6,7 @@ import { countries } from '../models/countries';
 import { languages } from '../models/languages';
 import { Store } from '@ngrx/store';
 import { appState } from '../state/app.state';
-import { changeLanguage } from '../state/app.actions';
+import { changeLanguage, updateUser } from '../state/app.actions';
 import { TranslatingService } from '../services/translatingService.service';
 import { userinfo } from '../models/userinfo';
 import { getLanguage, getUserInfo } from '../state/app.selectors';
@@ -36,7 +36,7 @@ export class MainNavComponent implements OnInit {
   constructor(private breakpointObserver: BreakpointObserver,
     private store: Store<{appStateOBJ:appState}>,
     private translatingService: TranslatingService,
-    public dialog: MatDialog) {}
+    private dialog: MatDialog) {}
 
     ngOnInit(){
        this.store.select(getLanguage).subscribe(res=>{
@@ -61,11 +61,13 @@ export class MainNavComponent implements OnInit {
       dialogOBJ.afterClosed().subscribe((result) => {
         if(result != undefined){
           console.log(`Dialog result:`, result);
-  
+          
+          this.store.dispatch(updateUser({user: result}))
           
         }
       });
     }
+    
     changeLanguage(){
        this.store.dispatch(changeLanguage({lang: this.selectedLang}))
       this.store.select(getLanguage).subscribe(res=>{
