@@ -12,6 +12,7 @@ import { userinfo } from '../models/userinfo';
 import { getLanguage, getUserInfo } from '../state/app.selectors';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../pages/login/login.component';
+import { LoginInfoComponent } from '../pages/login-info/login-info.component';
 
 @Component({
   selector: 'app-main-nav',
@@ -42,14 +43,7 @@ export class MainNavComponent implements OnInit {
        this.store.select(getLanguage).subscribe(res=>{
          this.selectedLang = res
        })
-       this.store.select(getUserInfo).subscribe(res=>{
-         if(res.password == "" && res.email == "" && res.name == "" && res.title == ""){
-           console.log('user info: ', res);
-          this.isUserExist = false;
-         }else{
-          this.isUserExist = true;
-         }
-       })
+      this.userinfo$ = this.store.select(getUserInfo)
     }
     openLoginModal(){
       var dialogOBJ = this.dialog.open(LoginComponent, {
@@ -64,6 +58,20 @@ export class MainNavComponent implements OnInit {
           
           this.store.dispatch(updateUser({user: result}))
           
+        }
+      });
+    }
+
+    openProfileInfoModal(){
+      var dialogOBJ = this.dialog.open(LoginInfoComponent, {
+        data: this.modalData,
+        maxWidth: "unset",
+        panelClass: "myDialogCSS",
+      })
+  
+      dialogOBJ.afterClosed().subscribe((result) => {
+        if(result != undefined){
+          console.log(`Dialog result:`, result);
         }
       });
     }

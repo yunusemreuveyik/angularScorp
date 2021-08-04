@@ -34,7 +34,8 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button mat-button *ngIf="!isUserExist && !(isHandset$ | async)" (click)="openLoginModal()">Login</button>
+      <button mat-button *ngIf="((userinfo$ | async)?.name == '') && !(isHandset$ | async)" (click)="openLoginModal()">Login</button>
+      <button mat-button *ngIf="((userinfo$ | async)?.name != '') && !(isHandset$ | async)" (click)="openProfileInfoModal()">{{ (userinfo$ | async)?.name }}</button>
     </mat-toolbar>
 
     <!-- ng-content bizim contentimiz her zaman navigator altında olmuş olucak, yani olması gerektiği gibi -->
