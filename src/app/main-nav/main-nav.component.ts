@@ -24,8 +24,8 @@ export class MainNavComponent implements OnInit {
 
   selectedLang: string;
   languages: Array<languages> = [
-    { code: "tr", name: "türkçe" },
-    { code: "en", name: "ingilizce" },
+    { code: "tr", name: "Türkçe" },
+    { code: "en", name: "Englsh" },
   ]
   userinfo$: Observable<userinfo>
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
